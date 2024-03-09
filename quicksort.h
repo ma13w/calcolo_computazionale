@@ -1,10 +1,3 @@
-void swap(int *n1, int *n2, int *calc) {
-    int temp = *n1;
-    *n1 = *n2;
-    *n2 = temp;
-    *calc += 3;
-}
-
 int partition(int arr[], int low, int high, int *calc) {
     int pivot = arr[high];
     int i = low - 1;
