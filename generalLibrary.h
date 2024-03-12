@@ -20,7 +20,7 @@ void printArray(int arr[], int length){
     printf("\n");
 }
 
-void randomArray(int array[], int length, int min, int max){
+void randomArray(int array[], int length, const int min, const int max){
     for(int i = 0; i < length; i++) array[i] = rand() % (max - min + 1) + min;
 }
 
@@ -33,6 +33,22 @@ int avarage(int array[], int length){
     int avarage = 0;
     for(int i = 0; i < length; i++) avarage += array[i];
     return avarage / length;
+}
+
+void writeArrayIntoFile(char nomeFile[], int array[], int len){
+	FILE *file = fopen(nomeFile, "w+");
+	for(int i = 0; i < len; i++) fprintf(file, "%d\n", array[i]);
+	fclose(file);
+}
+
+void readArrayIntoFile(char nomeFile[], int array[], int len){
+	FILE *file = fopen(nomeFile, "r");
+	int n;
+	for(int i = 0; i < len; i++){
+		fscanf(file, "%d\n", &n);
+		array[i]=n;
+	}
+	fclose(file);
 }
 
 void finalPrettyPrint(algorithm array[], int length, int arrayLen, int qntTest){
