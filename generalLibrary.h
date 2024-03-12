@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 struct algorithm{
 	char name[20];
@@ -29,10 +30,8 @@ void initialize(int array[], int length, int *heapOper) {
     *heapOper = 0;
 }
 
-int avarage(int array[], int length){
-    int avarage = 0;
-    for(int i = 0; i < length; i++) avarage += array[i];
-    return avarage / length;
+int avarage(int n1, int n2){
+    return (n1+n2)/2;
 }
 
 void writeArrayIntoFile(char nomeFile[], int array[], int len){
@@ -45,7 +44,7 @@ void readArrayIntoFile(char nomeFile[], int array[], int len){
 	FILE *file = fopen(nomeFile, "r");
 	int n;
 	for(int i = 0; i < len; i++){
-		fscanf(file, "%d\n", &n);
+		fscanf(file, "%d", &n);
 		array[i]=n;
 	}
 	fclose(file);

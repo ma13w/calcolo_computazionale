@@ -1,11 +1,12 @@
 int partition(int arr[], int low, int high, int *calc) {
     int pivot = arr[high];
     int i = low - 1;
-    *calc += 2;
+    *calc += 3;
 
-    *calc = *calc + (2+(high)*2);
+    *calc += 1;
     for (int j = low; j <= high - 1; j++) {
-
+		*calc += 2;
+		
         *calc += 1;
         if (arr[j] <= pivot) {
             *calc += 2;
@@ -13,6 +14,7 @@ int partition(int arr[], int low, int high, int *calc) {
             swap(&arr[i], &arr[j], calc);
         }
     }
+    *calc += 1;
 
     *calc += 1;
     swap(&arr[i + 1], &arr[high], calc);
