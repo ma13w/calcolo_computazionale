@@ -1,12 +1,13 @@
 void insertionSort(int array[], int dim, int *operation){
     int temp, j;
+    *operation+=2;
     for(int i=1; i<dim; i++){
         temp = array[i];
         (*operation)++;
         j = i-1;
         (*operation)++;
         while(j >= 0 && array[j] > temp){
-            (*operation) += 2;
+            *operation += 2;
             array[j+1] = array[j];
             (*operation)++;
             j--;

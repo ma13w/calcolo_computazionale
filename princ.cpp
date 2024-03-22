@@ -15,8 +15,8 @@ quick sort & heap sort: 6907.755279
 int main(){
 	printf("princ.cpp work!");
 
-	const int ARR_LENGTH = 1000;
-	const int TEST_QNT = 1;
+	const int ARR_LENGTH = 10000;
+	const int TEST_QNT = 3;
 	const int ALGORITHM_QNT = 5;
 	const int MIN_VALUE = 0;
 	const int MAX_VALUE = 500;
@@ -32,30 +32,35 @@ int main(){
 		randomArray(array, ARR_LENGTH, MIN_VALUE, MAX_VALUE);
 		writeArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
 		
+		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
 		heapSort(array, ARR_LENGTH, &operTemp);
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[0].points, operTemp);
 		finalResult[0].points = operTempTemp;
 		
+		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
 		insertionSort(array, ARR_LENGTH, &operTemp);
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[1].points, operTemp);
 		finalResult[1].points = operTempTemp;
 		
+		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
 		mergeSort(array, 0, ARR_LENGTH - 1, &operTemp);
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[2].points, operTemp);
 		finalResult[2].points = operTempTemp;
 		
+		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
 		quickSort(array, 0, ARR_LENGTH-1, &operTemp);
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[3].points, operTemp);
 		finalResult[3].points = operTempTemp;
 		
+		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
 		selectionSort(array, ARR_LENGTH, &operTemp);
 		if(i==0) operTempTemp = operTemp;
