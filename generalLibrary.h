@@ -58,3 +58,22 @@ void finalPrettyPrint(algorithm array[], int length, int arrayLen, int qntTest){
 		printf("%10d", array[i].points);
 	}
 }
+
+void orderAlgorithm(algorithm array[], int qntTest){
+	char help[20];
+	long int temp;
+	
+	for(int i = 0; i < qntTest; i++){
+		for(int j = 0; j < qntTest; j++){
+			if(array[i].points > array[j].points){
+				temp = array[i].points;
+				array[i].points = array[j].points;
+				array[j].points = temp;
+				
+				strcpy(help, array[i].name);
+				strcpy(array[i].name, array[j].name);
+				strcpy(array[j].name, help);
+			}
+		}
+	}
+}

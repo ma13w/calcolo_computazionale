@@ -1,9 +1,8 @@
-#include<stdio.h>
 void merge(int arr[], int l, int m, int r, int *oper) {
     int i, j, k;
     *oper+=3;
     int n1 = m - l + 1;
-    *oper+=3;
+    *oper+=2;
     int n2 = r - m;
     *oper+=2;
  
@@ -15,26 +14,26 @@ void merge(int arr[], int l, int m, int r, int *oper) {
     *oper+=1;
     for (i = 0; i < n1; i++) {
         L[i] = arr[l + i];
-        *oper+=1;
+        *oper+=2;
         
-    	*oper+=3;
+    	*oper+=3; //for
     }
     
     *oper+=1;
     for (j = 0; j < n2; j++) {
         R[j] = arr[m + 1 + j];
-        *oper+=1; // Incrementa il conteggio delle operazioni
+        *oper+=2; // Incrementa il conteggio delle operazioni
         
-        *oper+=3;
+        *oper+=3; //for
     }
  
     // Merge the temp arrays back into arr[l..r]
     i = 0;
-    (*oper)++;
+    *oper+=1;
     j = 0;
-    (*oper)++;
+    *oper+=1;
     k = l;
-    (*oper)++;
+    *oper+=1;
     
     *oper+=2;
     while (i < n1 && j < n2) {
@@ -43,16 +42,16 @@ void merge(int arr[], int l, int m, int r, int *oper) {
         *oper+=1;
         if (L[i] <= R[j]) {
             arr[k] = L[i];
-            (*oper)++;
+            *oper+=1;
             i++;
-            (*oper)++;
+            *oper+=1;
         } else {
             *oper+=2;
             arr[k] = R[j];
             j++;
         }
         k++;
-        (*oper)++;
+        *oper+=1;
     }
  
     // Copy the remaining elements of L[], if there are any
@@ -65,7 +64,7 @@ void merge(int arr[], int l, int m, int r, int *oper) {
         i++;
         *oper+=1;
         k++;
-        (*oper)++; // Incrementa il conteggio delle operazioni
+        *oper+=1; // Incrementa il conteggio delle operazioni
     }
  
     // Copy the remaining elements of R[], if there are any
@@ -77,24 +76,23 @@ void merge(int arr[], int l, int m, int r, int *oper) {
         j++;
         *oper+=1;
         k++;
-        (*oper)++; // Incrementa il conteggio delle operazioni
+        *oper+=1; // Incrementa il conteggio delle operazioni
     }
 }
 
-// l è l'indice sinistro e r è l'indice destro del sotto-array di arr da ordinare
 void mergeSort(int arr[], int l, int r, int *oper) {
-    (*oper)++;
+    *oper+=1;
     if (l < r) {
-         // Incrementa il conteggio delle operazioni
+        // Incrementa il conteggio delle operazioni
         
         int m = l + (r - l) / 2;
-        (*oper)+=3; // Incrementa il conteggio delle operazioni
+        *oper+=3; // Incrementa il conteggio delle operazioni
  
         // Ordina la prima e la seconda metà
         mergeSort(arr, l, m, oper);
         *oper+=1;
         mergeSort(arr, m + 1, r, oper);
-        *oper+=1;
+        *oper+=2;
         merge(arr, l, m, r, oper);
         *oper+=1; // Incrementa il conteggio delle operazioni
     }
