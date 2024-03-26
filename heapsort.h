@@ -1,4 +1,4 @@
-void heapify(int arr[], int n, int i, int *conta) {
+void heapify(long long int arr[], const int n, long long int i, long long int *conta) {
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
@@ -25,7 +25,7 @@ void heapify(int arr[], int n, int i, int *conta) {
     }
 }
 
-void heapSort(int arr[], int n, int *conta) {
+void heapSort(long long int arr[], const int n, long long int *conta) {
 	*conta += 1;
     for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(arr, n, i, conta);

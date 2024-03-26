@@ -1,4 +1,4 @@
-void insertionSort(int array[], int dim, int *operation){
+void insertionSort(long long int array[], const int dim, long long int *operation){
     int temp, j;
     *operation+=2;
     

@@ -1,4 +1,4 @@
-void selectionSort(int arr[], int dim, int *operazioni) {
+void selectionSort(long long int arr[], int dim, long long int *operazioni) {
     int i, j, min_idx;
     *operazioni+=3;
 

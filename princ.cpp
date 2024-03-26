@@ -15,14 +15,14 @@ quick sort & heap sort: 6907.755279
 int main(){
 	printf("princ.cpp work!");
 
-	const int ARR_LENGTH = 100000;
-	const int TEST_QNT = 2;
+	const int ARR_LENGTH = 10000;
+	const int TEST_QNT = 1;
 	const int ALGORITHM_QNT = 5;
 	const int MIN_VALUE = 0;
 	const int MAX_VALUE = 500;
 
 	algorithm finalResult[ALGORITHM_QNT];
-	int array[ARR_LENGTH], avarageArray[TEST_QNT], operTemp, operTempTemp;
+	long long int array[ARR_LENGTH], avarageArray[TEST_QNT], operTemp, operTempTemp;
     for(int i = 0; i < TEST_QNT; i++) avarageArray[i] = 0; 
 
 	srand(time(NULL));
@@ -75,7 +75,7 @@ int main(){
 	strcpy(finalResult[4].name, "Selection Sort");
 
 	//printArray(array, ARR_LENGTH);
-	orderAlgorithm(finalResult, TEST_QNT);
+	orderAlgorithm(finalResult, ALGORITHM_QNT);
 	finalPrettyPrint(finalResult, ALGORITHM_QNT, ARR_LENGTH, TEST_QNT);
 
 	return 0;

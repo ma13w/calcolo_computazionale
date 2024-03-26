@@ -2,47 +2,48 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include <string.h>
 
 struct algorithm{
 	char name[20];
-	int points;
+	long long int points;
 };
 
-void swap(int *n1, int *n2, int *calc) {
-    int temp = *n1;
+void swap(long long int *n1, long long int *n2, long long int *calc) {
+    long long int temp = *n1;
     *n1 = *n2;
     *n2 = temp;
     *calc += 3;
 }
 
-void printArray(int arr[], int length){
+void printArray(long long int arr[], const int length){
     printf("\n");
     for(int i = 0; i < length; i++) printf("%d |", arr[i]);
     printf("\n");
 }
 
-void randomArray(int array[], int length, const int min, const int max){
+void randomArray(long long int array[], const int length, const int min, const int max){
     for(int i = 0; i < length; i++) array[i] = rand() % (max - min + 1) + min;
 }
 
-void initialize(int array[], int length, int *heapOper) {
+void initialize(long long int array[], const int length, long long int *heapOper) {
     for(int i = 0; i < length; i++) array[i] = 0;
     *heapOper = 0;
 }
 
-int avarage(int n1, int n2){
+long long int avarage(long long int n1, long long int n2){
     return (n1+n2)/2;
 }
 
-void writeArrayIntoFile(char nomeFile[], int array[], int len){
+void writeArrayIntoFile(char nomeFile[], long long int array[], const int len){
 	FILE *file = fopen(nomeFile, "w+");
 	for(int i = 0; i < len; i++) fprintf(file, "%d\n", array[i]);
 	fclose(file);
 }
 
-void readArrayIntoFile(char nomeFile[], int array[], int len){
+void readArrayIntoFile(char nomeFile[], long long int array[], const int len){
 	FILE *file = fopen(nomeFile, "r");
-	int n;
+	long long int n;
 	for(int i = 0; i < len; i++){
 		fscanf(file, "%d", &n);
 		array[i]=n;
@@ -50,7 +51,7 @@ void readArrayIntoFile(char nomeFile[], int array[], int len){
 	fclose(file);
 }
 
-void finalPrettyPrint(algorithm array[], int length, int arrayLen, int qntTest){
+void finalPrettyPrint(algorithm array[], const int length, const int arrayLen, const int qntTest){
     printf("\n%d test per algoritmo con %d elementi", qntTest, arrayLen);
     for(int i = 0; i < length; i++){
 		printf("\n=================================\n");
@@ -59,12 +60,12 @@ void finalPrettyPrint(algorithm array[], int length, int arrayLen, int qntTest){
 	}
 }
 
-void orderAlgorithm(algorithm array[], int qntTest){
+void orderAlgorithm(algorithm array[], const int algTest){
 	char help[20];
-	long int temp;
+	long long int temp;
 	
-	for(int i = 0; i < qntTest; i++){
-		for(int j = 0; j < qntTest; j++){
+	for(int i = 0; i < algTest-1; i++){
+		for(int j = i+1; j < algTest; j++){
 			if(array[i].points > array[j].points){
 				temp = array[i].points;
 				array[i].points = array[j].points;

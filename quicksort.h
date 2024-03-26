@@ -1,4 +1,4 @@
-int partition(int arr[], int low, int high, int *calc) {
+int partition(long long int arr[], int low, int high, long long int *calc) {
     int pivot = arr[high];
     int i = low - 1;
     *calc += 4;
@@ -23,7 +23,7 @@ int partition(int arr[], int low, int high, int *calc) {
     return i + 1;
 }
 
-void quickSort(int arr[], int low, int high, int *calc) {
+void quickSort(long long int arr[], int low, int high, long long int *calc) {
     *calc += 1; // check if
     if(high <= low) {
     	*calc += 1; //return

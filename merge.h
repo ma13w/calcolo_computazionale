@@ -1,99 +1,65 @@
-void merge(int arr[], int l, int m, int r, int *oper) {
-    int i, j, k;
-    *oper+=3;
-    int n1 = m - l + 1;
-    *oper+=2;
-    int n2 = r - m;
-    *oper+=2;
- 
-    // Create temp arrays
-    int L[n1], R[n2];
-    *oper+=2;
+void merge(long long int a[], int p, int q, int r, long long int *conta) {
+  int i, j, k=0, b[r];
+  i = p;
+  j = q+1;
+  *conta+=6;
+	
+  *conta+=2;
+  while (i<=q && j<=r) {
+  	*conta+=1;
+    if (a[i]<a[j]) {
+      b[k] = a[i];
+      i++;
+      *conta+=2;
+    } else {
+      b[k] = a[j];
+      j++;
+      *conta+=2;
+    }
+    k++; *conta+=1;
+  }
+  *conta+=1;
+  while (i <= q) {
+  	*conta+=1;
+  	
+  	*conta+=3;
+    b[k] = a[i];
+    i++;
+    k++;
+  }
+  
+  *conta+=1;
+  while (j <= r) {
+  	*conta+=1;
+  	
+  	*conta+=3;
+    b[k] = a[j];
+    j++;
+    k++;
+  }
+  
+  *conta+=1;
+  for (k=p; k<=r; k++){
+  	*conta+=3;
+  	*conta+=1;
+    a[k] = b[k-p];
+  }
     
-    // Copy data to temp arrays L[] and R[]
-    *oper+=1;
-    for (i = 0; i < n1; i++) {
-        L[i] = arr[l + i];
-        *oper+=2;
-        
-    	*oper+=3; //for
-    }
-    
-    *oper+=1;
-    for (j = 0; j < n2; j++) {
-        R[j] = arr[m + 1 + j];
-        *oper+=2; // Incrementa il conteggio delle operazioni
-        
-        *oper+=3; //for
-    }
- 
-    // Merge the temp arrays back into arr[l..r]
-    i = 0;
-    *oper+=1;
-    j = 0;
-    *oper+=1;
-    k = l;
-    *oper+=1;
-    
-    *oper+=2;
-    while (i < n1 && j < n2) {
-    	*oper+=2;
-    	
-        *oper+=1;
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            *oper+=1;
-            i++;
-            *oper+=1;
-        } else {
-            *oper+=2;
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-        *oper+=1;
-    }
- 
-    // Copy the remaining elements of L[], if there are any
-    *oper+=1;
-    while (i < n1) {
-    	*oper+=1;
-    	
-        arr[k] = L[i];
-        *oper+=1;
-        i++;
-        *oper+=1;
-        k++;
-        *oper+=1; // Incrementa il conteggio delle operazioni
-    }
- 
-    // Copy the remaining elements of R[], if there are any
-    *oper+=1;
-    while (j < n2) {
-        *oper+=1;
-        arr[k] = R[j];
-        *oper+=1;
-        j++;
-        *oper+=1;
-        k++;
-        *oper+=1; // Incrementa il conteggio delle operazioni
-    }
+  *conta+=1;
+  return;
 }
 
-void mergeSort(int arr[], int l, int r, int *oper) {
-    *oper+=1;
-    if (l < r) {
-        // Incrementa il conteggio delle operazioni
-        
-        int m = l + (r - l) / 2;
-        *oper+=3; // Incrementa il conteggio delle operazioni
- 
-        // Ordina la prima e la seconda metà
-        mergeSort(arr, l, m, oper);
-        *oper+=1;
-        mergeSort(arr, m + 1, r, oper);
-        *oper+=2;
-        merge(arr, l, m, r, oper);
-        *oper+=1; // Incrementa il conteggio delle operazioni
-    }
+void mergeSort(long long int a[], int p, int r, long long int *conta) {
+  int q;
+  *conta+=1;
+  
+  *conta+=1;
+  if (p < r) {
+    q = (p+r)/2; *conta+=1;
+    mergeSort(a, p, q, conta); *conta+=1;
+    mergeSort(a, q+1, r, conta); *conta+=2;
+    merge(a, p, q, r, conta); *conta+=1;
+  }
+  *conta+=1;
+  return; 
 }
