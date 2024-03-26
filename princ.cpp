@@ -15,7 +15,7 @@ quick sort & heap sort: 6907.755279
 int main(){
 	printf("princ.cpp work!");
 
-	const int ARR_LENGTH = 10000;
+	const int ARR_LENGTH = 100000;
 	const int TEST_QNT = 1;
 	const int ALGORITHM_QNT = 5;
 	const int MIN_VALUE = 0;
@@ -23,6 +23,7 @@ int main(){
 
 	algorithm finalResult[ALGORITHM_QNT];
 	long long int array[ARR_LENGTH], avarageArray[TEST_QNT], operTemp, operTempTemp;
+	int progress = 0;
     for(int i = 0; i < TEST_QNT; i++) avarageArray[i] = 0; 
 
 	srand(time(NULL));
@@ -31,6 +32,8 @@ int main(){
 		initialize(array, ARR_LENGTH, &operTemp);
 		randomArray(array, ARR_LENGTH, MIN_VALUE, MAX_VALUE);
 		writeArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
+		progress++;
+		printUploadProgressBar(progress/TEST_QNT);
 		
 		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
@@ -38,6 +41,8 @@ int main(){
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[0].points, operTemp);
 		finalResult[0].points = operTempTemp;
+		progress++;
+		printUploadProgressBar(progress/TEST_QNT);
 		
 		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
@@ -45,6 +50,8 @@ int main(){
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[1].points, operTemp);
 		finalResult[1].points = operTempTemp;
+		progress++;
+		printUploadProgressBar(progress/TEST_QNT);
 		
 		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
@@ -52,6 +59,8 @@ int main(){
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[2].points, operTemp);
 		finalResult[2].points = operTempTemp;
+		progress++;
+		printUploadProgressBar(progress/TEST_QNT);
 		
 		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
@@ -59,6 +68,8 @@ int main(){
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[3].points, operTemp);
 		finalResult[3].points = operTempTemp;
+		progress++;
+		printUploadProgressBar(progress/TEST_QNT);
 		
 		initialize(array, ARR_LENGTH, &operTemp);
 		readArrayIntoFile("arrayToSort.txt", array, ARR_LENGTH);
@@ -66,6 +77,8 @@ int main(){
 		if(i==0) operTempTemp = operTemp;
 		else operTempTemp = avarage(finalResult[4].points, operTemp);
 		finalResult[4].points = operTempTemp;
+		progress++;
+		printUploadProgressBar(progress/TEST_QNT);
 	}
 	
 	strcpy(finalResult[0].name, "Heap Sort");

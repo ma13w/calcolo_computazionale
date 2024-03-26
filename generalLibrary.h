@@ -56,7 +56,7 @@ void finalPrettyPrint(algorithm array[], const int length, const int arrayLen, c
     for(int i = 0; i < length; i++){
 		printf("\n=================================\n");
 		printf("%-20s", array[i].name);
-		printf("%10d", array[i].points);
+		printf("%10llu", array[i].points);
 	}
 }
 
@@ -77,4 +77,12 @@ void orderAlgorithm(algorithm array[], const int algTest){
 			}
 		}
 	}
+}
+
+void printUploadProgressBar(int progress){
+	system("cls");
+	
+	printf("progress bar\n------------------\n");
+	for(int i = 0; i < progress; i++) printf("|||");
+	printf("\n------------------\n");
 }
