@@ -6,7 +6,7 @@
 
 struct algorithm{
 	char name[20];
-	long long int points;
+	long long int points[100];
 };
 
 void swap(long long int *n1, long long int *n2, long long int *calc) {
@@ -51,38 +51,31 @@ void readArrayIntoFile(char nomeFile[], long long int array[], const int len){
 	fclose(file);
 }
 
-void finalPrettyPrint(algorithm array[], const int length, const int arrayLen, const int qntTest){
-    printf("\n%d test per algoritmo con %d elementi", qntTest, arrayLen);
+void finalPrettyPrint(algorithm array[], const int length, const int arrayLen, const int qntTest, int state){
+//    printf("\n%d test per algoritmo con %d elementi", qntTest, arrayLen);
+	printf("\n%-20s", "Array size");
+	for(int i = 10; i <= arrayLen; i*=10) printf("%15llu", i);
     for(int i = 0; i < length; i++){
-		printf("\n=================================\n");
+    	printf("\n");
+		for(int j = 0; j < 20+15*state; j++) printf("=");
+		printf("\n");
 		printf("%-20s", array[i].name);
-		printf("%10llu", array[i].points);
+		for(int k = 0; k < state; k++) printf("%15llu", array[i].points[k]);
 	}
 }
 
-void orderAlgorithm(algorithm array[], const int algTest){
-	char help[20];
-	long long int temp;
+void printUploadProgressBar(int progress, int ARR_LENGTH, int ALGORITHM_QNT){
+	int state = 0;
+	for(int j = 10; j <= ARR_LENGTH; j*=10) state++;
+	state *= ALGORITHM_QNT;
 	
-	for(int i = 0; i < algTest-1; i++){
-		for(int j = i+1; j < algTest; j++){
-			if(array[i].points > array[j].points){
-				temp = array[i].points;
-				array[i].points = array[j].points;
-				array[j].points = temp;
-				
-				strcpy(help, array[i].name);
-				strcpy(array[i].name, array[j].name);
-				strcpy(array[j].name, help);
-			}
-		}
-	}
-}
-
-void printUploadProgressBar(int progress){
 	system("cls");
-	
-	printf("progress bar\n------------------\n");
-	for(int i = 0; i < progress; i++) printf("|||");
-	printf("\n------------------\n");
+	printf("progress bar\n");
+	printf("\n");
+	for(int i = 0; i < state; i++) printf("---");
+	printf("\n");
+	for(int i = 0; i < progress; i++) printf("===");
+	printf("\n");
+	for(int i = 0; i < state; i++) printf("---");
+	printf("\n");
 }
