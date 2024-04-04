@@ -64,6 +64,20 @@ void finalPrettyPrint(algorithm array[], const int length, const int arrayLen, c
 	}
 }
 
+void finalPrettyPrintIntoFile(algorithm array[], const int length, const int arrayLen, const int qntTest, int state){
+	FILE *fp = fopen("calcolo_computazionale_output.txt", "w+");
+	fprintf(fp, "\n%-20s", "Array size");
+	for(int i = 10; i <= arrayLen; i*=10) fprintf(fp, "%15llu", i);
+    for(int i = 0; i < length; i++){
+    	fprintf(fp, "%s", "\n");
+		for(int j = 0; j < 20+15*state; j++) fprintf(fp, "%s", "=");
+		fprintf(fp, "%s", "\n");
+		fprintf(fp, "%-20s", array[i].name);
+		for(int k = 0; k < state; k++) fprintf(fp, "%15llu", array[i].points[k]);
+	}
+	fclose(fp);
+}
+
 void printUploadProgressBar(int progress, int ARR_LENGTH, int ALGORITHM_QNT){
 	int state = 0;
 	for(int j = 10; j <= ARR_LENGTH; j*=10) state++;

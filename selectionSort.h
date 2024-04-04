@@ -19,7 +19,7 @@ void selectionSort(long long int arr[], int dim, long long int *operazioni) {
 			
 			*operazioni+=1; //increase j
         	*operazioni+=1; //go up
-		}	
+		}
         swap(&arr[min_idx], &arr[i], operazioni); *operazioni+=1;
         
         *operazioni+=1; //increase i

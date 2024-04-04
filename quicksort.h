@@ -1,7 +1,7 @@
 int partition(long long int arr[], int low, int high, long long int *calc) {
     int pivot = arr[high];
     int i = low - 1;
-    *calc += 4;
+    *calc += 3;
 
     *calc += 1; //init j
     for (int j = low; j <= high - 1; j++) {
@@ -26,7 +26,6 @@ int partition(long long int arr[], int low, int high, long long int *calc) {
 void quickSort(long long int arr[], int low, int high, long long int *calc) {
     *calc += 1; // check if
     if(high <= low) {
-    	*calc += 1; //return
 		return;
 	}
     

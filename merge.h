@@ -2,10 +2,12 @@ void merge(long long int a[], int p, int q, int r, long long int *conta) {
   int i, j, k=0, b[r];
   i = p;
   j = q+1;
-  *conta+=6;
+  *conta+=8;
 	
   *conta+=2;
   while (i<=q && j<=r) {
+  	*conta+=3;
+  	
   	*conta+=1;
     if (a[i]<a[j]) {
       b[k] = a[i];
@@ -18,9 +20,10 @@ void merge(long long int a[], int p, int q, int r, long long int *conta) {
     }
     k++; *conta+=1;
   }
+  
   *conta+=1;
   while (i <= q) {
-  	*conta+=1;
+  	*conta+=2;
   	
   	*conta+=3;
     b[k] = a[i];
@@ -30,7 +33,7 @@ void merge(long long int a[], int p, int q, int r, long long int *conta) {
   
   *conta+=1;
   while (j <= r) {
-  	*conta+=1;
+  	*conta+=2;
   	
   	*conta+=3;
     b[k] = a[j];
@@ -41,11 +44,11 @@ void merge(long long int a[], int p, int q, int r, long long int *conta) {
   *conta+=1;
   for (k=p; k<=r; k++){
   	*conta+=3;
-  	*conta+=1;
+  	
+  	*conta+=2;
     a[k] = b[k-p];
   }
     
-  *conta+=1;
   return;
 }
 
@@ -55,11 +58,11 @@ void mergeSort(long long int a[], int p, int r, long long int *conta) {
   
   *conta+=1;
   if (p < r) {
-    q = (p+r)/2; *conta+=1;
+    q = (p+r)/2; *conta+=3;
     mergeSort(a, p, q, conta); *conta+=1;
     mergeSort(a, q+1, r, conta); *conta+=2;
     merge(a, p, q, r, conta); *conta+=1;
   }
-  *conta+=1;
+  
   return; 
 }
