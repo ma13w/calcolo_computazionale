@@ -53,14 +53,14 @@ void readArrayIntoFile(char nomeFile[], long long int array[], const int len){
 
 void finalPrettyPrint(algorithm array[], const int length, const int arrayLen, const int qntTest, int state){
 //    printf("\n%d test per algoritmo con %d elementi", qntTest, arrayLen);
-	printf("\n%-20s", "Array size");
-	for(int i = 10; i <= arrayLen; i*=10) printf("%15llu", i);
+	printf("\n%-16s", "Array size");
+	for(int i = 10; i <= arrayLen; i*=10) printf("%14llu", i);
     for(int i = 0; i < length; i++){
     	printf("\n");
-		for(int j = 0; j < 20+15*state; j++) printf("=");
+		for(int j = 0; j < 16+14*state; j++) printf("=");
 		printf("\n");
-		printf("%-20s", array[i].name);
-		for(int k = 0; k < state; k++) printf("%15llu", array[i].points[k]);
+		printf("%-16s", array[i].name);
+		for(int k = 0; k < state; k++) printf("%14llu", array[i].points[k]);
 	}
 }
 
