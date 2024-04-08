@@ -14,15 +14,16 @@
 int main(){
 	printf("princ.cpp work!");
 
-	const int ARR_LENGTH = 10000;
-	const int TEST_QNT = 3;
-	const int ALGORITHM_QNT = 6;
-	const int MIN_VALUE = 0;
-	const int MAX_VALUE = 5000;
+	const int ARR_LENGTH = 10000; // max value 10.000 -> buffer overflow
+	const int TEST_QNT = 3; // quantità di test - media tra i test fatti
+	const int ALGORITHM_QNT = 6; // quantità algoritmi
+	const int MIN_VALUE = 0; // valore minimo nel caricamento dell'array
+	const int MAX_VALUE = 5000; // valore massimo nel caricamento dell'array
 
 	algorithm finalResult[ALGORITHM_QNT];
 	long long int array[ARR_LENGTH], avarageArray[TEST_QNT], operTemp, operTempTemp;
 	int progress = 0, state = 0;
+	
     for(int i = 0; i < TEST_QNT; i++) avarageArray[i] = 0; 
 
 	srand(time(NULL));
